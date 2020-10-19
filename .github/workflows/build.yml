@@ -1,0 +1,23 @@
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Setup Bicep
+        uses: anthony-c-martin/setup-bicep@main
+
+      - name: Build main.bicep
+        run: bicep build ./bicep/main.bicep
+
+      - name: Build main_with_warnings.bicep
+        run: bicep build ./bicep/main_with_warnings.bicep
+
+      - name: Build main_with_errors.bicep
+        run: bicep build ./bicep/main_with_errors.bicep
