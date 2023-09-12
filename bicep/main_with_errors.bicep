@@ -20,7 +20,7 @@ var networkSecurityGroupName2 = concat(subnet2Name, '-nsg')
 // This is the virtual machine that you're building.
 resource vm 'Microsoft.Compute/virtualMachines@2017-03-30' {
   name: virtualMachineName
-  location: location
+  location: resourceGroup().location
   properties: {
     osProfile: {
       computerName: virtualMachineName
